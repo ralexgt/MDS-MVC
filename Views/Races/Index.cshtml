@@ -1,0 +1,90 @@
+﻿@model MvcRace.Models.RaceStatusViewModel
+
+@{
+    ViewData["Title"] = "F1Calendar";
+}
+
+<h1>F1 Calendar</h1>
+
+<p>
+    <a asp-action="Create">Add race</a>
+</p>
+
+<form asp-controller="Races" asp-action="Index" method="get">
+    <p>
+        <span> Filter by: (race status | grand prix) &nbsp </span>
+        <select asp-for="RaceStatus" asp-items="Model.Statuses">
+            <option value="">Status</option>
+        </select>
+        <span> &nbsp | &nbsp </span>
+        <input type="text" asp-for="SearchString" placeholder="Grand Prix"/>
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].Circuit)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].EndDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Races![0].Winner)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Races!) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.No)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Circuit)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Winner)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
