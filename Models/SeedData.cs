@@ -14,10 +14,10 @@ public static class SeedData
             serviceProvider.GetRequiredService<
                 DbContextOptions<F1CalendarContext>>()))
         {
-            // Look for any movies.
+            // Look for any inputs that may already be in the database.
             if (context.Race.Any())
             {
-                return;   // DB has been seeded
+                return;   // Database already seeded.
             }
             context.Race.AddRange(
                 new Race
