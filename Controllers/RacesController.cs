@@ -19,7 +19,6 @@ namespace F1Calendar.Controllers
             _context = context;
         }
 
-        // GET: Races
         public async Task<IActionResult> Index(string raceStatus, string searchString)
         {
             if (_context.Race == null)
@@ -52,7 +51,6 @@ namespace F1Calendar.Controllers
             return View(raceStatusVM);
         }
 
-        // GET: Races/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.Race == null)
@@ -70,15 +68,11 @@ namespace F1Calendar.Controllers
             return View(race);
         }
 
-        // GET: Races/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Races/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,No,Name,Circuit,Country,StartDate,EndDate,Status,Winner")] Race race)
@@ -92,7 +86,6 @@ namespace F1Calendar.Controllers
             return View(race);
         }
 
-        // GET: Races/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Race == null)
@@ -108,9 +101,6 @@ namespace F1Calendar.Controllers
             return View(race);
         }
 
-        // POST: Races/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,No,Name,Circuit,Country,StartDate,EndDate,Status,Winner")] Race race)
@@ -143,7 +133,6 @@ namespace F1Calendar.Controllers
             return View(race);
         }
 
-        // GET: Races/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.Race == null)
@@ -161,7 +150,6 @@ namespace F1Calendar.Controllers
             return View(race);
         }
 
-        // POST: Races/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
